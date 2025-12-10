@@ -8,338 +8,342 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/gsap.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/ScrollTrigger.min.js"></script>
   <style>
-    /* Load custom fonts */
-    @font-face {
-      font-family: 'BrasiliaDelight';
-      src: url('BrasiliaDelight-Regular.otf') format('opentype');
-      font-weight: normal;
-      font-style: normal;
-    }
+   <style>
+  /* Load custom fonts */
+  @font-face {
+    font-family: 'BrasiliaDelight';
+    src: url('BrasiliaDelight-Regular.otf') format('opentype');
+    font-weight: normal;
+    font-style: normal;
+  }
 
-    @font-face {
-      font-family: 'ArtigoDisplay';
-      src: url('fonnts.com-Artigo-Display-Medium.otf') format('opentype');
-      font-weight: 600;
-      font-style: normal;
-    }
+  @font-face {
+    font-family: 'ArtigoDisplay';
+    src: url('fonnts.com-Artigo-Display-Medium.otf') format('opentype');
+    font-weight: 600;
+    font-style: normal;
+  }
 	
-    @font-face {
-      font-family: 'Castillem';
-      src: url('Castillem.otf') format('opentype');
-      font-weight: normal;
-      font-style: normal;
-    }
+  @font-face {
+    font-family: 'Castillem';
+    src: url('Castillem.otf') format('opentype');
+    font-weight: normal;
+    font-style: normal;
+  }
 
-    /* Root variables */
-    :root {
-      --primary: #B76E79;
-      --bg: rgba(255, 255, 255, 0.85);
-      --text: #222;
-      --muted: #6b6b73;
-      --card-radius: 20px;
-      --gold: #D4AF37;
-      --maroon: #800020;
-    }
+  /* Root variables */
+  :root {
+    --primary: #B76E79;
+    --bg: rgba(255, 255, 255, 0.85);
+    --text: #222;
+    --muted: #6b6b73;
+    --card-radius: 20px;
+    --gold: #D4AF37;
+    --maroon: #800020;
+  }
 
-    body {
-      font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial;
-      margin: 0;
-      color: var(--text);
-      background:
-        linear-gradient(rgba(255,255,255,0.75), rgba(255,255,255,0.75)),
-        url('bg.jpg')
-        no-repeat center center fixed;
-      background-size: cover;
-    }
+  body {
+    font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial;
+    margin: 0;
+    color: var(--text);
+    background:
+      linear-gradient(rgba(255,255,255,0.75), rgba(255,255,255,0.75)),
+      url('bg.jpg')
+      no-repeat center center fixed;
+    background-size: cover;
+  }
 
-    .container {
-      max-width: 1100px;
-      margin: 36px auto;
-      padding: 24px;
-    }
+  .container {
+    max-width: 1100px;
+    margin: 36px auto;
+    padding: 24px;
+  }
 
-    header {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      text-align: center;
-    }
+  header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
 
-    .names {
-      font-family: "BrasiliaDelight";
-      font-size: 60px;
-      color: var(--maroon);
-      margin-bottom: 100px;
-    }
+  .names {
+    font-family: "BrasiliaDelight";
+    font-size: 60px;
+    color: var(--maroon);
+    margin-bottom: 100px;
+  }
 
-    .date {
-      font-family: "ArtigoDisplay", serif;
-      font-size: 40px;
-    }
+  .date {
+    font-family: "ArtigoDisplay", serif;
+    font-size: 40px;
+  }
   
-    .count {
-      font-family: "Castillem";
-      font-size: 35px;
-      color: #000000;
-    }
+  .count {
+    font-family: "Castillem";
+    font-size: 35px;
+    color: #000000;
+  }
 
-    .countdown {
-      display: flex;
-      gap: 12px;
-      margin: 10px 0;
-      flex-wrap: wrap;
-      justify-content: center;
-    }
+  .countdown {
+    display: flex;
+    gap: 12px;
+    margin: 10px 0;
+    flex-wrap: nowrap;           /* ✅ all squares stay on one line */
+    justify-content: center;
+  }
 
-    .unit {
-      padding: 18px;
-      border-radius: 10px;
-      min-width: 88px;
-      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
-      background: rgba(255,255,255,0.9);
-    }
+  .unit {
+    padding: 18px;
+    border-radius: 10px;
+    min-width: 88px;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
+    background: rgba(255,255,255,0.9);
+  }
 
-    .unit .num {
-      font-family: "BrasiliaDelight";
-      font-weight: 700;
-      font-size: 35px;
-      text-align: center;
-      color: #000000;
-    }
+  .unit .num {
+    font-family: "BrasiliaDelight";
+    font-weight: 700;
+    font-size: 35px;
+    text-align: center;
+    color: #000000;
+  }
 
-    .unit .label {
-      font-family: "ArtigoDisplay";
-      font-size: 15px;
-      color: #000000;
-      text-align: center;
-      margin-top: 6px;
-    }
+  .unit .label {
+    font-family: "ArtigoDisplay";
+    font-size: 15px;
+    color: #000000;
+    text-align: center;
+    margin-top: 6px;
+  }
   
-    .weddingcard {
-      font-family: "ArtigoDisplay";
-      font-size: 40px;
-      text-align: center;
-      color: var(--maroon);
-      padding: 18px;
-      margin-top: 20px;
-    }
+  .weddingcard {
+    font-family: "ArtigoDisplay";
+    font-size: 40px;
+    text-align: center;
+    color: var(--maroon);
+    padding: 18px;
+    margin-top: 20px;
+  }
 
-    .card {
-      background: rgba(255, 255, 255, 0.9);
-      border-radius: var(--card-radius);
-      padding: 16px;
-      margin: 14px 0;
-      box-shadow: 0 8px 24px rgba(15, 15, 20, 0.05);
-    }
+  /* ✅ make invite card image responsive on mobile */
+  .weddingcard img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+  }
 
+  .card {
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: var(--card-radius);
+    padding: 16px;
+    margin: 14px 0;
+    box-shadow: 0 8px 24px rgba(15, 15, 20, 0.05);
+  }
+
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 18px;
+  }
+
+  iframe {
+    width: 100%;
+    border-radius: 8px;
+    height: 300px;
+    border: 0;
+  }
+
+  .btn {
+    display: inline-block;
+    padding: 10px 14px;
+    border-radius: 8px;
+    background: var(--primary);
+    color: white;
+    text-decoration: none;
+    font-weight: 600;
+    transition: background 0.3s;
+  }
+
+  .btn:hover {
+    background: #a75e69;
+  }
+
+  footer {
+    margin-top: 26px;
+    text-align: center;
+    color: var(--muted);
+    font-size: 15px;
+    font-weight: 700; /* bolder text */
+    padding: 12px 0;
+  }
+
+  /* 🌸 ORDER OF EVENTS TIMELINE STYLES (MATCHING INVITATION LOOK) */
+  .order-events {
+    padding: 60px 20px 40px;
+    text-align: center;
+  }
+
+  .events-title {
+    font-family: "ArtigoDisplay";
+    font-size: 40px;
+    color: var(--maroon);
+    margin-bottom: 40px;
+  }
+
+  .timeline {
+    position: relative;
+    max-width: 1000px;
+    margin: auto;
+  }
+
+  /* Center vertical line */
+  .timeline::before {
+    content: "";
+    position: absolute;
+    width: 3px;
+    background: linear-gradient(to bottom, transparent, var(--gold), transparent);
+    top: 0;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  .event {
+    position: relative;
+    width: 50%;
+    margin-bottom: 70px;
+    opacity: 1;
+    transform: none;
+    transition: all 0.7s ease;
+  }
+
+  /* Scroll animation states */
+  .event.animate {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+
+  .event.show {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .left { left: 0; }
+  .right { left: 50%; }
+
+  .left .event-text {
+    text-align: right;
+    padding-right: 18px; /* small gap from line */
+  }
+
+  .right .event-text {
+    text-align: left;
+    padding-left: 18px;  /* small gap from line */
+  }
+
+  .event-text h3 {
+    font-family: "ArtigoDisplay";
+    font-size: 24px;
+    color: var(--maroon);
+    margin-bottom: 6px;
+  }
+
+  .event-text p {
+    margin: 2px 0;
+    font-size: 16px;
+    color: var(--text);
+  }
+
+  /* Get Directions link */
+  .directions-link {
+    display: inline-block;
+    margin-top: 6px;
+    font-size: 14px;
+    color: var(--primary);
+    text-decoration: none;
+    font-weight: 600;
+    border-bottom: 1px dotted var(--primary);
+    transition: all 0.25s ease;
+  }
+
+  .directions-link:hover {
+    color: var(--maroon);
+    border-bottom-color: var(--maroon);
+  }
+
+  /* Live links */
+  .live-link {
+    display: inline-block;
+    margin-top: 4px;
+    font-size: 14px;
+    color: var(--gold);
+    text-decoration: none;
+    font-weight: 600;
+    border-bottom: 1px solid transparent;
+    transition: all 0.25s ease;
+  }
+
+  .live-link:hover {
+    color: var(--maroon);
+    border-bottom-color: var(--maroon);
+  }
+
+  /* Images on opposite side of line */
+  .event-graphic {
+    position: absolute;
+    top: -30px;
+    width: 130px;
+  }
+
+  .event-graphic img {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+
+  .left .event-graphic {
+    right: -155px;
+  }
+
+  .right .event-graphic {
+    left: -155px;
+  }
+
+  /* ✅ MOBILE TWEAKS – keep layout same, just shrink things */
+  @media (max-width: 780px) {
     .grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 18px;
+      grid-template-columns: 1fr;
     }
-
     iframe {
-      width: 100%;
-      border-radius: 8px;
-      height: 300px;
-      border: 0;
+      height: 220px;
+    }
+    .names {
+      font-size: 32px;
     }
 
-    .btn {
-      display: inline-block;
-      padding: 10px 14px;
-      border-radius: 8px;
-      background: var(--primary);
-      color: white;
-      text-decoration: none;
-      font-weight: 600;
-      transition: background 0.3s;
+    /* countdown squares a bit smaller but still in one row */
+    .countdown {
+      gap: 8px;
     }
-
-    .btn:hover {
-      background: #a75e69;
+    .unit {
+      min-width: 70px;
+      padding: 12px;
     }
-
-    footer {
-      margin-top: 26px;
-      text-align: center;
-      color: var(--muted);
-      font-size: 15px;
-      font-weight: 700; /* bolder text */
-      padding: 12px 0;
+    .unit .num {
+      font-size: 26px;
     }
-
-    /* 🌸 ORDER OF EVENTS TIMELINE STYLES (MATCHING INVITATION LOOK) */
-    .order-events {
-      padding: 60px 20px 40px;
-      text-align: center;
+    .unit .label {
+      font-size: 12px;
     }
+  }
 
-    .events-title {
-      font-family: "ArtigoDisplay";
-      font-size: 40px;
-      color: var(--maroon);
-      margin-bottom: 40px;
-    }
+  /* Make spans block-level for smooth GSAP transform */
+  #name1, #name2 {
+    display: inline-block;
+  }
+</style>
 
-    .timeline {
-      position: relative;
-      max-width: 1000px;
-      margin: auto;
-    }
-
-    /* Center vertical line */
-    .timeline::before {
-      content: "";
-      position: absolute;
-      width: 3px;
-      background: linear-gradient(to bottom, transparent, var(--gold), transparent);
-      top: 0;
-      bottom: 0;
-      left: 50%;
-      transform: translateX(-50%);
-    }
-
-    .event {
-      position: relative;
-      width: 50%;
-      margin-bottom: 70px;
-      opacity: 1;
-      transform: none;
-      transition: all 0.7s ease;
-    }
-
-    /* Scroll animation states */
-    .event.animate {
-      opacity: 0;
-      transform: translateY(40px);
-    }
-
-    .event.show {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    .left { left: 0; }
-    .right { left: 50%; }
-
-    .left .event-text {
-      text-align: right;
-      padding-right: 18px; /* small gap from line */
-    }
-
-    .right .event-text {
-      text-align: left;
-      padding-left: 18px;  /* small gap from line */
-    }
-
-    .event-text h3 {
-      font-family: "ArtigoDisplay";
-      font-size: 24px;
-      color: var(--maroon);
-      margin-bottom: 6px;
-    }
-
-    .event-text p {
-      margin: 2px 0;
-      font-size: 16px;
-      color: var(--text);
-    }
-
-    /* Get Directions link */
-    .directions-link {
-      display: inline-block;
-      margin-top: 6px;
-      font-size: 14px;
-      color: var(--primary);
-      text-decoration: none;
-      font-weight: 600;
-      border-bottom: 1px dotted var(--primary);
-      transition: all 0.25s ease;
-    }
-
-    .directions-link:hover {
-      color: var(--maroon);
-      border-bottom-color: var(--maroon);
-    }
-
-    /* Live links */
-    .live-link {
-      display: inline-block;
-      margin-top: 4px;
-      font-size: 14px;
-      color: var(--gold);
-      text-decoration: none;
-      font-weight: 600;
-      border-bottom: 1px solid transparent;
-      transition: all 0.25s ease;
-    }
-
-    .live-link:hover {
-      color: var(--maroon);
-      border-bottom-color: var(--maroon);
-    }
-
-    /* Images on opposite side of line */
-    .event-graphic {
-      position: absolute;
-      top: -30px;
-      width: 130px;
-    }
-
-    .event-graphic img {
-      width: 100%;
-      height: auto;
-      display: block;
-    }
-
-    .left .event-graphic {
-      right: -155px;
-    }
-
-    .right .event-graphic {
-      left: -155px;
-    }
-
-    /* Responsive */
-    @media (max-width: 780px) {
-      .grid {
-        grid-template-columns: 1fr;
-      }
-      iframe {
-        height: 220px;
-      }
-      .names {
-        font-size: 32px;
-      }
-    }
-
-    @media (max-width: 768px) {
-      .timeline::before {
-        left: 18px;
-      }
-
-      .event {
-        width: 100%;
-        left: 0 !important;
-      }
-
-      .event-text {
-        text-align: left !important;
-        padding-left: 40px !important;
-      }
-
-      .event-graphic {
-        position: static;
-        margin: 10px 0 0 40px;
-        width: 110px;
-      }
-    }
-
-    /* Make spans block-level for smooth GSAP transform */
-    #name1, #name2 {
-      display: inline-block;
-    }
   </style>
 </head>
 
@@ -535,3 +539,4 @@
   </script>
 </body>
 </html>
+
