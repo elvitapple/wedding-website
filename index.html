@@ -84,40 +84,40 @@
       color: #000000;
     }
 
-    /* ===================== COUNTDOWN ===================== */
+    /* ===================== COUNTDOWN (MATCH SCREENSHOT) ===================== */
     .countdown {
       display: flex;
-      gap: 12px;
-      margin: 10px 0;
-      flex-wrap: nowrap;       /* always single row */
       justify-content: center;
-      overflow-x: auto;        /* horizontal scroll if very narrow */
-      -webkit-overflow-scrolling: touch;
+      gap: 24px;
+      margin: 26px 0 10px;
+      flex-wrap: nowrap;              /* always one row */
+      box-sizing: border-box;
+      padding: 10px 8px;
     }
 
     .unit {
       flex: 0 0 auto;
-      padding: 18px;
-      border-radius: 10px;
-      min-width: 88px;
-      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
-      background: rgba(255,255,255,0.9);
+      background: #ffffff;
+      border-radius: 24px;
+      padding: 26px 22px;
+      min-width: 120px;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
     }
 
     .unit .num {
-      font-family: "BrasiliaDelight";
+      font-family: "BrasiliaDelight", cursive;
       font-weight: 700;
-      font-size: 35px;
+      font-size: 44px;
       text-align: center;
       color: #000000;
     }
 
     .unit .label {
-      font-family: "ArtigoDisplay";
-      font-size: 15px;
-      color: #000000;
+      font-family: "ArtigoDisplay", serif;
+      font-size: 14px;
       text-align: center;
       margin-top: 6px;
+      color: #000000;
     }
 
     /* ===================== INVITATION CARD ===================== */
@@ -287,21 +287,23 @@
         margin-bottom: 60px;
       }
 
+      /* smaller countdown cards but still 1 row */
       .countdown {
-        gap: 8px;
+        gap: 10px;
       }
 
       .unit {
-        min-width: 70px;
-        padding: 12px;
+        min-width: 80px;
+        padding: 18px 12px;
+        border-radius: 20px;
       }
 
       .unit .num {
-        font-size: 26px;
+        font-size: 32px;
       }
 
       .unit .label {
-        font-size: 12px;
+        font-size: 11px;
       }
 
       .events-title {
@@ -478,7 +480,7 @@
       ease: "power1.out"
     });
 
-    // Optional scroll trigger (can keep or remove)
+    // Optional scroll trigger (you can remove if not needed)
     ScrollTrigger.create({
       trigger: "header",
       start: "bottom bottom",
