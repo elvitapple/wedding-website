@@ -277,7 +277,7 @@
     }
 
     /* ===================== RESPONSIVE ===================== */
-    @media (max-width: 780px) {
+    @media (max-width: 768px) {
       .container {
         padding: 16px;
       }
@@ -289,17 +289,17 @@
 
       /* smaller countdown cards but still 1 row */
       .countdown {
-        gap: 10px;
+        gap: 8px;
       }
 
       .unit {
-        min-width: 80px;
+        min-width: 70px;
         padding: 15px 10px;
         border-radius: 20px;
       }
 
       .unit .num {
-        font-size: 30px;
+        font-size: 28px;
       }
 
       .unit .label {
@@ -319,9 +319,17 @@
       }
 
       .event-graphic {
-        width: 95px;
+        width: 125px;
         top: 50%;
         transform: translateY(-50%);
+      }
+
+      .left .event-graphic{
+        right: -115px;
+      }
+
+      .right .event-graphic{
+        left: -115px;
       }
     }
   </style>
@@ -551,6 +559,7 @@
   </script>
 </body>
 </html>
+
 
 
 
