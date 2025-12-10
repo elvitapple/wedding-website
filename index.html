@@ -4,371 +4,364 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Andrew & Elvita — Wedding</title>
+
   <!-- GSAP Libraries -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/gsap.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/ScrollTrigger.min.js"></script>
+
   <style>
-   <style>
-  /* Load custom fonts */
-  @font-face {
-    font-family: 'BrasiliaDelight';
-    src: url('BrasiliaDelight-Regular.otf') format('opentype');
-    font-weight: normal;
-    font-style: normal;
-  }
-
-  @font-face {
-    font-family: 'ArtigoDisplay';
-    src: url('fonnts.com-Artigo-Display-Medium.otf') format('opentype');
-    font-weight: 600;
-    font-style: normal;
-  }
-	
-  @font-face {
-    font-family: 'Castillem';
-    src: url('Castillem.otf') format('opentype');
-    font-weight: normal;
-    font-style: normal;
-  }
-
-  /* Root variables */
-  :root {
-    --primary: #B76E79;
-    --bg: rgba(255, 255, 255, 0.85);
-    --text: #222;
-    --muted: #6b6b73;
-    --card-radius: 20px;
-    --gold: #D4AF37;
-    --maroon: #800020;
-  }
-
-  body {
-    font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial;
-    margin: 0;
-    color: var(--text);
-    background:
-      linear-gradient(rgba(255,255,255,0.75), rgba(255,255,255,0.75)),
-      url('bg.jpg')
-      no-repeat center center fixed;
-    background-size: cover;
-  }
-
-  .container {
-    max-width: 1100px;
-    margin: 36px auto;
-    padding: 24px;
-  }
-
-  header {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-  }
-
-  .names {
-    font-family: "BrasiliaDelight";
-    font-size: 60px;
-    color: var(--maroon);
-    margin-bottom: 100px;
-  }
-
-  .date {
-    font-family: "ArtigoDisplay", serif;
-    font-size: 40px;
-  }
-  
-  .count {
-    font-family: "Castillem";
-    font-size: 35px;
-    color: #000000;
-  }
-
-  .countdown {
-    display: flex;
-    gap: 12px;
-    margin: 10px 0;
-    flex-wrap: nowrap;           /* ✅ all squares stay on one line */
-    justify-content: center;
-  }
-
-  .unit {
-    padding: 18px;
-    border-radius: 10px;
-    min-width: 88px;
-    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
-    background: rgba(255,255,255,0.9);
-  }
-
-  .unit .num {
-    font-family: "BrasiliaDelight";
-    font-weight: 700;
-    font-size: 35px;
-    text-align: center;
-    color: #000000;
-  }
-
-  .unit .label {
-    font-family: "ArtigoDisplay";
-    font-size: 15px;
-    color: #000000;
-    text-align: center;
-    margin-top: 6px;
-  }
-  
-  .weddingcard {
-    font-family: "ArtigoDisplay";
-    font-size: 40px;
-    text-align: center;
-    color: var(--maroon);
-    padding: 18px;
-    margin-top: 20px;
-  }
-
-  /* ✅ make invite card image responsive on mobile */
-  .weddingcard img {
-    max-width: 100%;
-    height: auto;
-    display: block;
-    margin: 0 auto;
-  }
-
-  .card {
-    background: rgba(255, 255, 255, 0.9);
-    border-radius: var(--card-radius);
-    padding: 16px;
-    margin: 14px 0;
-    box-shadow: 0 8px 24px rgba(15, 15, 20, 0.05);
-  }
-
-  .grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 18px;
-  }
-
-  iframe {
-    width: 100%;
-    border-radius: 8px;
-    height: 300px;
-    border: 0;
-  }
-
-  .btn {
-    display: inline-block;
-    padding: 10px 14px;
-    border-radius: 8px;
-    background: var(--primary);
-    color: white;
-    text-decoration: none;
-    font-weight: 600;
-    transition: background 0.3s;
-  }
-
-  .btn:hover {
-    background: #a75e69;
-  }
-
-  footer {
-    margin-top: 26px;
-    text-align: center;
-    color: var(--muted);
-    font-size: 15px;
-    font-weight: 700; /* bolder text */
-    padding: 12px 0;
-  }
-
-  /* 🌸 ORDER OF EVENTS TIMELINE STYLES (MATCHING INVITATION LOOK) */
-  .order-events {
-    padding: 60px 20px 40px;
-    text-align: center;
-  }
-
-  .events-title {
-    font-family: "ArtigoDisplay";
-    font-size: 40px;
-    color: var(--maroon);
-    margin-bottom: 40px;
-  }
-
-  .timeline {
-    position: relative;
-    max-width: 1000px;
-    margin: auto;
-  }
-
-  /* Center vertical line */
-  .timeline::before {
-    content: "";
-    position: absolute;
-    width: 3px;
-    background: linear-gradient(to bottom, transparent, var(--gold), transparent);
-    top: 0;
-    bottom: 0;
-    left: 50%;
-    transform: translateX(-50%);
-  }
-
-  .event {
-    position: relative;
-    width: 50%;
-    margin-bottom: 70px;
-    opacity: 1;
-    transform: none;
-    transition: all 0.7s ease;
-  }
-
-  /* Scroll animation states */
-  .event.animate {
-    opacity: 0;
-    transform: translateY(40px);
-  }
-
-  .event.show {
-    opacity: 1;
-    transform: translateY(0);
-  }
-
-  .left { left: 0; }
-  .right { left: 50%; }
-
-  .left .event-text {
-    text-align: right;
-    padding-right: 18px; /* small gap from line */
-  }
-
-  .right .event-text {
-    text-align: left;
-    padding-left: 18px;  /* small gap from line */
-  }
-
-  .event-text h3 {
-    font-family: "ArtigoDisplay";
-    font-size: 24px;
-    color: var(--maroon);
-    margin-bottom: 6px;
-  }
-
-  .event-text p {
-    margin: 2px 0;
-    font-size: 16px;
-    color: var(--text);
-  }
-
-  /* Get Directions link */
-  .directions-link {
-    display: inline-block;
-    margin-top: 6px;
-    font-size: 14px;
-    color: var(--primary);
-    text-decoration: none;
-    font-weight: 600;
-    border-bottom: 1px dotted var(--primary);
-    transition: all 0.25s ease;
-  }
-
-  .directions-link:hover {
-    color: var(--maroon);
-    border-bottom-color: var(--maroon);
-  }
-
-  /* Live links */
-  .live-link {
-    display: inline-block;
-    margin-top: 4px;
-    font-size: 14px;
-    color: var(--gold);
-    text-decoration: none;
-    font-weight: 600;
-    border-bottom: 1px solid transparent;
-    transition: all 0.25s ease;
-  }
-
-  .live-link:hover {
-    color: var(--maroon);
-    border-bottom-color: var(--maroon);
-  }
-
-  /* Images on opposite side of line */
-  .event-graphic {
-    position: absolute;
-    top: -30px;
-    width: 130px;
-  }
-
-  .event-graphic img {
-    width: 100%;
-    height: auto;
-    display: block;
-  }
-
-  .left .event-graphic {
-    right: -155px;
-  }
-
-  .right .event-graphic {
-    left: -155px;
-  }
-
-  /* ✅ MOBILE TWEAKS – keep layout same, just shrink things */
-  @media (max-width: 780px) {
-    .grid {
-      grid-template-columns: 1fr;
+    /* ===================== FONTS ===================== */
+    @font-face {
+      font-family: 'BrasiliaDelight';
+      src: url('BrasiliaDelight-Regular.otf') format('opentype');
+      font-weight: normal;
+      font-style: normal;
     }
-    iframe {
-      height: 220px;
+
+    @font-face {
+      font-family: 'ArtigoDisplay';
+      src: url('fonnts.com-Artigo-Display-Medium.otf') format('opentype');
+      font-weight: 600;
+      font-style: normal;
     }
+
+    @font-face {
+      font-family: 'Castillem';
+      src: url('Castillem.otf') format('opentype');
+      font-weight: normal;
+      font-style: normal;
+    }
+
+    /* ===================== ROOT & BODY ===================== */
+    :root {
+      --primary: #B76E79;
+      --bg: rgba(255, 255, 255, 0.85);
+      --text: #222;
+      --muted: #6b6b73;
+      --card-radius: 20px;
+      --gold: #D4AF37;
+      --maroon: #800020;
+    }
+
+    body {
+      font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial;
+      margin: 0;
+      color: var(--text);
+      background:
+        linear-gradient(rgba(255,255,255,0.75), rgba(255,255,255,0.75)),
+        url('bg.jpg') no-repeat center center fixed;
+      background-size: cover;
+    }
+
+    .container {
+      max-width: 1100px;
+      margin: 36px auto;
+      padding: 24px;
+    }
+
+    /* ===================== HEADER ===================== */
+    header {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+
     .names {
-      font-size: 32px;
+      font-family: "BrasiliaDelight";
+      font-size: 60px;
+      color: var(--maroon);
+      margin-bottom: 100px;
     }
 
-    /* countdown squares a bit smaller but still in one row */
+    #name1, #name2 {
+      display: inline-block; /* for GSAP slide-in */
+    }
+
+    .count {
+      font-family: "Castillem";
+      font-size: 35px;
+      color: #000000;
+    }
+
+    /* ===================== COUNTDOWN ===================== */
     .countdown {
-      gap: 8px;
+      display: flex;
+      gap: 12px;
+      margin: 10px 0;
+      flex-wrap: nowrap;       /* always single row */
+      justify-content: center;
+      overflow-x: auto;        /* horizontal scroll if very narrow */
+      -webkit-overflow-scrolling: touch;
     }
+
     .unit {
-      min-width: 70px;
-      padding: 12px;
+      flex: 0 0 auto;
+      padding: 18px;
+      border-radius: 10px;
+      min-width: 88px;
+      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
+      background: rgba(255,255,255,0.9);
     }
+
     .unit .num {
-      font-size: 26px;
+      font-family: "BrasiliaDelight";
+      font-weight: 700;
+      font-size: 35px;
+      text-align: center;
+      color: #000000;
     }
+
     .unit .label {
-      font-size: 12px;
+      font-family: "ArtigoDisplay";
+      font-size: 15px;
+      color: #000000;
+      text-align: center;
+      margin-top: 6px;
     }
-  }
 
-  /* Make spans block-level for smooth GSAP transform */
-  #name1, #name2 {
-    display: inline-block;
-  }
-</style>
+    /* ===================== INVITATION CARD ===================== */
+    .weddingcard {
+      font-family: "ArtigoDisplay";
+      font-size: 40px;
+      text-align: center;
+      color: var(--maroon);
+      padding: 18px;
+      margin-top: 20px;
+    }
 
+    .weddingcard img {
+      max-width: 100%;
+      height: auto;
+      display: block;
+      margin: 0 auto;
+      border-radius: 12px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+    }
+
+    /* ===================== ORDER OF EVENTS ===================== */
+    .order-events {
+      padding: 60px 20px 40px;
+      text-align: center;
+    }
+
+    .events-title {
+      font-family: "ArtigoDisplay";
+      font-size: 40px;
+      color: var(--maroon);
+      margin-bottom: 40px;
+    }
+
+    .timeline {
+      position: relative;
+      max-width: 1000px;
+      margin: auto;
+    }
+
+    .timeline::before {
+      content: "";
+      position: absolute;
+      width: 3px;
+      background: linear-gradient(to bottom, transparent, var(--gold), transparent);
+      top: 0;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+
+    .event {
+      position: relative;
+      width: 50%;
+      margin-bottom: 70px;
+      opacity: 1;
+      transform: none;
+      transition: all 0.7s ease;
+    }
+
+    .event.animate {
+      opacity: 0;
+      transform: translateY(40px);
+    }
+
+    .event.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .left  { left: 0; }
+    .right { left: 50%; }
+
+    .left .event-text {
+      text-align: right;
+      padding-right: 18px;
+    }
+
+    .right .event-text {
+      text-align: left;
+      padding-left: 18px;
+    }
+
+    .event-text h3 {
+      font-family: "ArtigoDisplay";
+      font-size: 24px;
+      color: var(--maroon);
+      margin-bottom: 6px;
+    }
+
+    .event-text p {
+      margin: 2px 0;
+      font-size: 16px;
+      color: var(--text);
+    }
+
+    .directions-link {
+      display: inline-block;
+      margin-top: 6px;
+      font-size: 14px;
+      color: var(--primary);
+      text-decoration: none;
+      font-weight: 600;
+      border-bottom: 1px dotted var(--primary);
+      transition: all 0.25s ease;
+    }
+
+    .directions-link:hover {
+      color: var(--maroon);
+      border-bottom-color: var(--maroon);
+    }
+
+    .live-link {
+      display: inline-block;
+      margin-top: 4px;
+      font-size: 14px;
+      color: var(--gold);
+      text-decoration: none;
+      font-weight: 600;
+      border-bottom: 1px solid transparent;
+      transition: all 0.25s ease;
+    }
+
+    .live-link:hover {
+      color: var(--maroon);
+      border-bottom-color: var(--maroon);
+    }
+
+    .event-graphic {
+      position: absolute;
+      top: -30px;
+      width: 130px;
+    }
+
+    .event-graphic img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    .left .event-graphic {
+      right: -155px;
+    }
+
+    .right .event-graphic {
+      left: -155px;
+    }
+
+    /* ===================== FOOTER ===================== */
+    footer {
+      margin-top: 26px;
+      text-align: center;
+      color: var(--muted);
+      font-size: 15px;
+      font-weight: 700;
+      padding: 12px 0 6px;
+    }
+
+    /* ===================== RESPONSIVE ===================== */
+    @media (max-width: 780px) {
+      .container {
+        padding: 16px;
+      }
+
+      .names {
+        font-size: 40px;
+        margin-bottom: 60px;
+      }
+
+      .countdown {
+        gap: 8px;
+      }
+
+      .unit {
+        min-width: 70px;
+        padding: 12px;
+      }
+
+      .unit .num {
+        font-size: 26px;
+      }
+
+      .unit .label {
+        font-size: 12px;
+      }
+
+      .events-title {
+        font-size: 32px;
+      }
+
+      .event-text h3 {
+        font-size: 22px;
+      }
+
+      .event-text p {
+        font-size: 15px;
+      }
+
+      .event-graphic {
+        width: 95px;
+        top: -20px;
+      }
+    }
   </style>
 </head>
 
 <body>
   <div class="overlay">
     <div class="container">
+      <!-- ===================== HEADER ===================== -->
       <header>
         <div class="names">
           <span id="name1">Andrew</span> & <span id="name2">Elvita</span>
         </div>
+
         <div class="count">Countdown to Forever...</div>
-        <div class="countdown card" id="countdown">
-          <div class="unit"><div class="num" id="days">0</div><div class="label">Days</div></div>
-          <div class="unit"><div class="num" id="hours">0</div><div class="label">Hours</div></div>
-          <div class="unit"><div class="num" id="minutes">0</div><div class="label">Minutes</div></div>
-          <div class="unit"><div class="num" id="seconds">0</div><div class="label">Seconds</div></div>
+
+        <div class="countdown" id="countdown">
+          <div class="unit">
+            <div class="num" id="days">0</div>
+            <div class="label">Days</div>
+          </div>
+          <div class="unit">
+            <div class="num" id="hours">0</div>
+            <div class="label">Hours</div>
+          </div>
+          <div class="unit">
+            <div class="num" id="minutes">0</div>
+            <div class="label">Minutes</div>
+          </div>
+          <div class="unit">
+            <div class="num" id="seconds">0</div>
+            <div class="label">Seconds</div>
+          </div>
         </div>
       </header>
 
+      <!-- ===================== INVITATION CARD ===================== -->
       <section class="weddingcard">
         <div class="weddingcard">Wedding Invitation</div>
-        <img src="wed card.jpg" alt="Wedding Invitation Card" width="550" height="650">
+        <img src="wed card.jpg" alt="Wedding Invitation Card">
       </section>
 
-      <!-- ✨ ORDER OF EVENTS SECTION -->
+      <!-- ===================== ORDER OF EVENTS ===================== -->
       <section class="order-events">
         <h2 class="events-title">Order of Events</h2>
 
@@ -381,7 +374,9 @@
               <p>12th Feb 2026</p>
               <p>7:00 PM Onwards</p>
               <p>The Lounge</p>
-              <a class="directions-link" href="https://maps.app.goo.gl/tTWmRG5A96qswWANA" target="_blank">Get Directions</a>
+              <a class="directions-link"
+                 href="https://maps.app.goo.gl/tTWmRG5A96qswWANA"
+                 target="_blank">Get Directions</a>
             </div>
             <div class="event-graphic">
               <img src="coconut.png" alt="Roce Coconut">
@@ -395,7 +390,9 @@
               <p>12th Feb 2026</p>
               <p>7:00 PM Onwards</p>
               <p>Solitaire - GCC Hotel & Club</p>
-              <a class="directions-link" href="https://maps.app.goo.gl/Ly2qHVimS2H58NBR9" target="_blank">Get Directions</a>
+              <a class="directions-link"
+                 href="https://maps.app.goo.gl/Ly2qHVimS2H58NBR9"
+                 target="_blank">Get Directions</a>
             </div>
             <div class="event-graphic">
               <img src="coconut.png" alt="Roce Coconut">
@@ -408,9 +405,12 @@
               <h3>Wedding Nuptial</h3>
               <p>14th Feb 2026, 2:30 PM</p>
               <p>Our Lady of Immaculate Conception Church, Borivali (W)</p>
-              <a class="directions-link" href="https://maps.app.goo.gl/smythFnh6tq2FZja9" target="_blank">Get Directions</a>
-              <!-- Live link under Nuptials -->
-              <a class="live-link" href="YOUTUBE_CHURCH_URL" target="_blank">Watch Church Live Stream</a>
+              <a class="directions-link"
+                 href="https://maps.app.goo.gl/smythFnh6tq2FZja9"
+                 target="_blank">Get Directions</a>
+              <a class="live-link"
+                 href="YOUTUBE_CHURCH_URL"
+                 target="_blank">Watch Church Live Stream</a>
             </div>
             <div class="event-graphic">
               <img src="church.png" alt="Wedding Church">
@@ -424,9 +424,12 @@
               <p>14th Feb 2026</p>
               <p>7:00 PM Sharp</p>
               <p>Mary Immaculate Girls High School, Borivali (W)</p>
-              <a class="directions-link" href="https://maps.app.goo.gl/vG9r6VbFdsFW2Vdf7" target="_blank">Get Directions</a>
-              <!-- Live link under Reception -->
-              <a class="live-link" href="YOUTUBE_RECEPTION_URL" target="_blank">Watch Reception Live Stream</a>
+              <a class="directions-link"
+                 href="https://maps.app.goo.gl/vG9r6VbFdsFW2Vdf7"
+                 target="_blank">Get Directions</a>
+              <a class="live-link"
+                 href="YOUTUBE_RECEPTION_URL"
+                 target="_blank">Watch Reception Live Stream</a>
             </div>
             <div class="event-graphic">
               <img src="reception.png" alt="Reception">
@@ -440,7 +443,9 @@
               <p>15th Feb 2026</p>
               <p>7:00 PM Onwards</p>
               <p>Solitaire - GCC Hotel & Club</p>
-              <a class="directions-link" href="https://maps.app.goo.gl/Ly2qHVimS2H58NBR9" target="_blank">Get Directions</a>
+              <a class="directions-link"
+                 href="https://maps.app.goo.gl/Ly2qHVimS2H58NBR9"
+                 target="_blank">Get Directions</a>
             </div>
             <div class="event-graphic">
               <img src="portapon.png" alt="Portapon Dinner">
@@ -449,17 +454,16 @@
 
         </div>
       </section>
-      <!--  END ORDER OF EVENTS -->
 
-
+      <!-- ===================== FOOTER ===================== -->
       <footer>
-        Made with ❤️ — <span>#AndrewAndElvita</span>
+        Made with ❤️ — #AndrewAndElvita
       </footer>
     </div>
   </div>
 
   <script>
-    // Animate each name flying in from opposite sides
+    // ===================== NAME ANIMATION =====================
     gsap.from("#name1", {
       duration: 1.5,
       xPercent: -300,
@@ -471,33 +475,40 @@
       duration: 1.5,
       xPercent: 300,
       opacity: 0,
-      ease: "power1.out",
+      ease: "power1.out"
     });
 
-    // Scroll trigger: jump to countdown when user scrolls past header
+    // Optional scroll trigger (can keep or remove)
     ScrollTrigger.create({
       trigger: "header",
       start: "bottom bottom",
       onEnter: () => {
-        document.getElementById("countdown").scrollIntoView({ behavior: "smooth" });
+        document.getElementById("countdown")
+                .scrollIntoView({ behavior: "smooth" });
       },
       onEnterBack: () => {
-        document.querySelector("header").scrollIntoView({ behavior: "smooth" });
+        document.querySelector("header")
+                .scrollIntoView({ behavior: "smooth" });
       }
     });
 
+    // ===================== COUNTDOWN LOGIC =====================
     const WEDDING_DATE_ISO = "2026-02-14T02:30:00+05:30";
     const end = new Date(WEDDING_DATE_ISO).getTime();
 
     function updateCountdown() {
       const now = Date.now();
       let diff = Math.max(0, end - now);
+
       const days = Math.floor(diff / (1000 * 60 * 60 * 24));
       diff -= days * (1000 * 60 * 60 * 24);
+
       const hours = Math.floor(diff / (1000 * 60 * 60));
       diff -= hours * (1000 * 60 * 60);
+
       const minutes = Math.floor(diff / (1000 * 60));
       diff -= minutes * (1000 * 60);
+
       const seconds = Math.floor(diff / 1000);
 
       document.getElementById('days').textContent = days;
@@ -506,7 +517,8 @@
       document.getElementById('seconds').textContent = seconds.toString().padStart(2, '0');
 
       if (end - now <= 0) {
-        document.getElementById('countdown').innerHTML = "<strong>The day has arrived — Welcome!</strong>";
+        document.getElementById('countdown').innerHTML =
+          "<strong>The day has arrived — Welcome!</strong>";
         clearInterval(timer);
       }
     }
@@ -514,11 +526,9 @@
     updateCountdown();
     const timer = setInterval(updateCountdown, 1000);
 
-    // Scroll animation for Order of Events
+    // ===================== TIMELINE SCROLL ANIMATION =====================
     document.addEventListener('DOMContentLoaded', () => {
       const events = document.querySelectorAll('.event');
-
-      // Mark events as animatable
       events.forEach(e => e.classList.add('animate'));
 
       if ('IntersectionObserver' in window) {
@@ -532,11 +542,9 @@
 
         events.forEach(event => observer.observe(event));
       } else {
-        // Older browser: just show them
         events.forEach(e => e.classList.add('show'));
       }
     });
   </script>
 </body>
 </html>
-
