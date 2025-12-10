@@ -23,7 +23,7 @@
       font-style: normal;
     }
 	
-	@font-face {
+    @font-face {
       font-family: 'Castillem';
       src: url('Castillem.otf') format('opentype');
       font-weight: normal;
@@ -37,148 +37,309 @@
       --text: #222;
       --muted: #6b6b73;
       --card-radius: 20px;
-	  --gold: #D4AF37;
+      --gold: #D4AF37;
       --maroon: #800020;
     }
 
     body {
-	font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial;
-    margin: 0;
-    color: var(--text);
-    /* 🌷 Add background image here */
-    background: 
-      linear-gradient(rgba(255,255,255,0.75), rgba(255,255,255,0.75)),
-      url('bg.jpg') 
-      no-repeat center center fixed;
-    background-size: cover;
-  }
-
-  .container {
-    max-width: 1100px;
-    margin: 36px auto;
-    padding: 24px;
-  }
-
-  header {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    
-    text-align: center;
-  }
-
-  .names {
-    font-family: "BrasiliaDelight";
-    font-size: 60px;
-	color: var(--maroon);
-	margin-bottom: 100px;
-  }
-
-  .date {
-	font-family: "ArtigoDisplay, serif"
-    font-size: 40xpx;
-  }
-  
-  .count{
-  font-family: "Castillem";
-  font-size: 35px;
-  color: #000000;
-  }
-
-  .countdown {
-    display: flex;
-    gap: 12px;
-    margin: 10px 0;
-    flex-wrap: wrap;
-    justify-content: center;
-  }
-
-  .unit {
-    padding: 18px;
-    border-radius: 10px;
-    min-width: 88px;
-    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
-  }
-
-  .unit .num {
-	font-family: "BrasiliaDelight";
-    font-weight: 700;
-    font-size: 35px;
-    text-align: center;
-	color: #000000;
-  }
-
-  .unit .label {
-	font-family: "ArtigoDisplay";
-    font-size: 15px;
-    color: #000000;
-    text-align: center;
-    margin-top: 6px;
-  }
-  
-  .weddingcard {
-  font-family: "ArtigoDisplay";
-  font-size: 40px;
-  text-align: center;
-  color: var(--maroon);
-  padding: 18px;
-  margin-top: 20px;
-  }
-
-  .card {
-    background: rgba(255, 255, 255, 0.9);
-    border-radius: var(--card-radius);
-    padding: 16px;
-    margin: 14px 0;
-    box-shadow: 0 8px 24px rgba(15, 15, 20, 0.05);
-  }
-
-  .grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 18px;
-  }
-
-  iframe {
-    width: 100%;
-    border-radius: 8px;
-    height: 300px;
-    border: 0;
-  }
-
-  .btn {
-    display: inline-block;
-    padding: 10px 14px;
-    border-radius: 8px;
-    background: var(--primary);
-    color: white;
-    text-decoration: none;
-    font-weight: 600;
-    transition: background 0.3s;
-  }
-
-  .btn:hover {
-    background: #a75e69;
-  }
-
-  footer {
-    margin-top: 26px;
-    text-align: center;
-    color: var(--muted);
-    font-size: 14px;
-  }
-
-  @media (max-width: 780px) {
-    .grid {
-      grid-template-columns: 1fr;
+      font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial;
+      margin: 0;
+      color: var(--text);
+      background:
+        linear-gradient(rgba(255,255,255,0.75), rgba(255,255,255,0.75)),
+        url('bg.jpg')
+        no-repeat center center fixed;
+      background-size: cover;
     }
-    iframe {
-      height: 220px;
+
+    .container {
+      max-width: 1100px;
+      margin: 36px auto;
+      padding: 24px;
     }
+
+    header {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+
     .names {
-      font-size: 32px;
+      font-family: "BrasiliaDelight";
+      font-size: 60px;
+      color: var(--maroon);
+      margin-bottom: 100px;
     }
-  }
+
+    .date {
+      font-family: "ArtigoDisplay", serif;
+      font-size: 40px;
+    }
+  
+    .count {
+      font-family: "Castillem";
+      font-size: 35px;
+      color: #000000;
+    }
+
+    .countdown {
+      display: flex;
+      gap: 12px;
+      margin: 10px 0;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .unit {
+      padding: 18px;
+      border-radius: 10px;
+      min-width: 88px;
+      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
+      background: rgba(255,255,255,0.9);
+    }
+
+    .unit .num {
+      font-family: "BrasiliaDelight";
+      font-weight: 700;
+      font-size: 35px;
+      text-align: center;
+      color: #000000;
+    }
+
+    .unit .label {
+      font-family: "ArtigoDisplay";
+      font-size: 15px;
+      color: #000000;
+      text-align: center;
+      margin-top: 6px;
+    }
+  
+    .weddingcard {
+      font-family: "ArtigoDisplay";
+      font-size: 40px;
+      text-align: center;
+      color: var(--maroon);
+      padding: 18px;
+      margin-top: 20px;
+    }
+
+    .card {
+      background: rgba(255, 255, 255, 0.9);
+      border-radius: var(--card-radius);
+      padding: 16px;
+      margin: 14px 0;
+      box-shadow: 0 8px 24px rgba(15, 15, 20, 0.05);
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 18px;
+    }
+
+    iframe {
+      width: 100%;
+      border-radius: 8px;
+      height: 300px;
+      border: 0;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 10px 14px;
+      border-radius: 8px;
+      background: var(--primary);
+      color: white;
+      text-decoration: none;
+      font-weight: 600;
+      transition: background 0.3s;
+    }
+
+    .btn:hover {
+      background: #a75e69;
+    }
+
+    footer {
+      margin-top: 26px;
+      text-align: center;
+      color: var(--muted);
+      font-size: 15px;
+      font-weight: 700; /* bolder text */
+      padding: 12px 0;
+    }
+
+    /* 🌸 ORDER OF EVENTS TIMELINE STYLES (MATCHING INVITATION LOOK) */
+    .order-events {
+      padding: 60px 20px 40px;
+      text-align: center;
+    }
+
+    .events-title {
+      font-family: "ArtigoDisplay";
+      font-size: 40px;
+      color: var(--maroon);
+      margin-bottom: 40px;
+    }
+
+    .timeline {
+      position: relative;
+      max-width: 1000px;
+      margin: auto;
+    }
+
+    /* Center vertical line */
+    .timeline::before {
+      content: "";
+      position: absolute;
+      width: 3px;
+      background: linear-gradient(to bottom, transparent, var(--gold), transparent);
+      top: 0;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+
+    .event {
+      position: relative;
+      width: 50%;
+      margin-bottom: 70px;
+      opacity: 1;
+      transform: none;
+      transition: all 0.7s ease;
+    }
+
+    /* Scroll animation states */
+    .event.animate {
+      opacity: 0;
+      transform: translateY(40px);
+    }
+
+    .event.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .left { left: 0; }
+    .right { left: 50%; }
+
+    .left .event-text {
+      text-align: right;
+      padding-right: 18px; /* small gap from line */
+    }
+
+    .right .event-text {
+      text-align: left;
+      padding-left: 18px;  /* small gap from line */
+    }
+
+    .event-text h3 {
+      font-family: "ArtigoDisplay";
+      font-size: 24px;
+      color: var(--maroon);
+      margin-bottom: 6px;
+    }
+
+    .event-text p {
+      margin: 2px 0;
+      font-size: 16px;
+      color: var(--text);
+    }
+
+    /* Get Directions link */
+    .directions-link {
+      display: inline-block;
+      margin-top: 6px;
+      font-size: 14px;
+      color: var(--primary);
+      text-decoration: none;
+      font-weight: 600;
+      border-bottom: 1px dotted var(--primary);
+      transition: all 0.25s ease;
+    }
+
+    .directions-link:hover {
+      color: var(--maroon);
+      border-bottom-color: var(--maroon);
+    }
+
+    /* Live links */
+    .live-link {
+      display: inline-block;
+      margin-top: 4px;
+      font-size: 14px;
+      color: var(--gold);
+      text-decoration: none;
+      font-weight: 600;
+      border-bottom: 1px solid transparent;
+      transition: all 0.25s ease;
+    }
+
+    .live-link:hover {
+      color: var(--maroon);
+      border-bottom-color: var(--maroon);
+    }
+
+    /* Images on opposite side of line */
+    .event-graphic {
+      position: absolute;
+      top: -30px;
+      width: 130px;
+    }
+
+    .event-graphic img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    .left .event-graphic {
+      right: -155px;
+    }
+
+    .right .event-graphic {
+      left: -155px;
+    }
+
+    /* Responsive */
+    @media (max-width: 780px) {
+      .grid {
+        grid-template-columns: 1fr;
+      }
+      iframe {
+        height: 220px;
+      }
+      .names {
+        font-size: 32px;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .timeline::before {
+        left: 18px;
+      }
+
+      .event {
+        width: 100%;
+        left: 0 !important;
+      }
+
+      .event-text {
+        text-align: left !important;
+        padding-left: 40px !important;
+      }
+
+      .event-graphic {
+        position: static;
+        margin: 10px 0 0 40px;
+        width: 110px;
+      }
+    }
+
+    /* Make spans block-level for smooth GSAP transform */
+    #name1, #name2 {
+      display: inline-block;
+    }
   </style>
 </head>
 
@@ -189,7 +350,7 @@
         <div class="names">
           <span id="name1">Andrew</span> & <span id="name2">Elvita</span>
         </div>
-		<div class="count">Countdown to Forever...</div>
+        <div class="count">Countdown to Forever...</div>
         <div class="countdown card" id="countdown">
           <div class="unit"><div class="num" id="days">0</div><div class="label">Days</div></div>
           <div class="unit"><div class="num" id="hours">0</div><div class="label">Hours</div></div>
@@ -200,56 +361,101 @@
 
       <section class="weddingcard">
         <div class="weddingcard">Wedding Invitation</div>
-		<img src="save.jpg" alt="Wedding Invitation Card" width="550" height="650">
+        <img src="wed card.jpg" alt="Wedding Invitation Card" width="550" height="650">
       </section>
 
+      <!-- ✨ ORDER OF EVENTS SECTION -->
+      <section class="order-events">
+        <h2 class="events-title">Order of Events</h2>
 
-      <section id="church" class="card">
-        <h3>Church Venue</h3>
-        <div class="grid">
-          <div>
-            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3766.867021423122!2d72.85063517498189!3d19.24462638199489!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be7b0e06c8142a1%3A0x1a9777f1e8fd01ff!2sOur%20Lady%20of%20the%20Immaculate%20Conception%20Church%20(IC%20Church)!5e0!3m2!1sen!2sin!4v1760769230430!5m2!1sen!2sin" allowfullscreen="" loading="lazy"></iframe>
-            <p style="margin-top:8px">Address: Our Lady of the Immaculate Conception Church, Borivali (W), Mumbai</p>
-            <a class="btn" href="https://www.google.com/maps/dir//Our+Lady+of+the+Immaculate+Conception+Church+(IC+Church)" target="_blank">Get Directions</a>
+        <div class="timeline">
+
+          <!-- Roce of Andrew -->
+          <div class="event left">
+            <div class="event-text">
+              <h3>Roce of Andrew</h3>
+              <p>12th Feb 2026</p>
+              <p>7:00 PM Onwards</p>
+              <p>The Lounge</p>
+              <a class="directions-link" href="https://maps.app.goo.gl/tTWmRG5A96qswWANA" target="_blank">Get Directions</a>
+            </div>
+            <div class="event-graphic">
+              <img src="coconut.png" alt="Roce Coconut">
+            </div>
           </div>
-          <div>
-            <h4>Church Live Stream</h4>
-            <iframe src="YOUTUBE_CHURCH_URL" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-            <p style="margin-top:8px;font-size:14px;color:var(--muted)">Click play to watch live during the ceremony.</p>
+
+          <!-- Roce of Elvita -->
+          <div class="event right">
+            <div class="event-text">
+              <h3>Roce of Elvita</h3>
+              <p>12th Feb 2026</p>
+              <p>7:00 PM Onwards</p>
+              <p>Solitaire - GCC Hotel & Club</p>
+              <a class="directions-link" href="https://maps.app.goo.gl/Ly2qHVimS2H58NBR9" target="_blank">Get Directions</a>
+            </div>
+            <div class="event-graphic">
+              <img src="coconut.png" alt="Roce Coconut">
+            </div>
           </div>
+
+          <!-- Wedding Nuptial -->
+          <div class="event left">
+            <div class="event-text">
+              <h3>Wedding Nuptial</h3>
+              <p>14th Feb 2026, 2:30 PM</p>
+              <p>Our Lady of Immaculate Conception Church, Borivali (W)</p>
+              <a class="directions-link" href="https://maps.app.goo.gl/smythFnh6tq2FZja9" target="_blank">Get Directions</a>
+              <!-- Live link under Nuptials -->
+              <a class="live-link" href="YOUTUBE_CHURCH_URL" target="_blank">Watch Church Live Stream</a>
+            </div>
+            <div class="event-graphic">
+              <img src="church.png" alt="Wedding Church">
+            </div>
+          </div>
+
+          <!-- Wedding Reception -->
+          <div class="event right">
+            <div class="event-text">
+              <h3>Wedding Reception</h3>
+              <p>14th Feb 2026</p>
+              <p>7:00 PM Sharp</p>
+              <p>Mary Immaculate Girls High School, Borivali (W)</p>
+              <a class="directions-link" href="https://maps.app.goo.gl/vG9r6VbFdsFW2Vdf7" target="_blank">Get Directions</a>
+              <!-- Live link under Reception -->
+              <a class="live-link" href="YOUTUBE_RECEPTION_URL" target="_blank">Watch Reception Live Stream</a>
+            </div>
+            <div class="event-graphic">
+              <img src="reception.png" alt="Reception">
+            </div>
+          </div>
+
+          <!-- Portapon -->
+          <div class="event left">
+            <div class="event-text">
+              <h3>Portapon</h3>
+              <p>15th Feb 2026</p>
+              <p>7:00 PM Onwards</p>
+              <p>Solitaire - GCC Hotel & Club</p>
+              <a class="directions-link" href="https://maps.app.goo.gl/Ly2qHVimS2H58NBR9" target="_blank">Get Directions</a>
+            </div>
+            <div class="event-graphic">
+              <img src="portapon.png" alt="Portapon Dinner">
+            </div>
+          </div>
+
         </div>
       </section>
+      <!--  END ORDER OF EVENTS -->
 
-      <section id="reception" class="card">
-        <h3>Reception Venue</h3>
-        <div class="grid">
-          <div>
-            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d941.6941047693022!2d72.85248596984697!3d19.248573463892786!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be7b0e1e5bee53d%3A0x308d30212709bed5!2sMary%20Immaculate%20Girls&#39;%20High%20School!5e0!3m2!1sen!2sin!4v1760769826166!5m2!1sen!2sin" allowfullscreen="" loading="lazy"></iframe>
-            <p style="margin-top:8px">Address: Mary Immaculate Girls' High School, Borivali (W), Mumbai</p>
-            <a class="btn" href="https://www.google.com/maps/dir//Mary+Immaculate+Girls'+High+School" target="_blank">Get Directions</a>
-          </div>
-          <div>
-            <h4>Reception Live Stream</h4>
-            <iframe src="YOUTUBE_RECEPTION_URL" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-            <p style="margin-top:8px;font-size:14px;color:var(--muted)">Watch the reception live.</p>
-          </div>
-        </div>
-      </section>
 
-      <footer class="card">
-        <div>Made with ❤️ — #AndrewAndElvita</div>
+      <footer>
+        Made with ❤️ — <span>#AndrewAndElvita</span>
       </footer>
     </div>
   </div>
-<style>
-  /* Make spans block-level for smooth GSAP transform */
-  #name1, #name2 {
-    display: inline-block; /* key for sliding animation */
-  }
-</style>
 
   <script>
- // Animate each name flying in from opposite sides
+    // Animate each name flying in from opposite sides
     gsap.from("#name1", {
       duration: 1.5,
       xPercent: -300,
@@ -275,8 +481,6 @@
         document.querySelector("header").scrollIntoView({ behavior: "smooth" });
       }
     });
-	
-
 
     const WEDDING_DATE_ISO = "2026-02-14T02:30:00+05:30";
     const end = new Date(WEDDING_DATE_ISO).getTime();
@@ -305,6 +509,29 @@
 
     updateCountdown();
     const timer = setInterval(updateCountdown, 1000);
+
+    // Scroll animation for Order of Events
+    document.addEventListener('DOMContentLoaded', () => {
+      const events = document.querySelectorAll('.event');
+
+      // Mark events as animatable
+      events.forEach(e => e.classList.add('animate'));
+
+      if ('IntersectionObserver' in window) {
+        const observer = new IntersectionObserver(entries => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('show');
+            }
+          });
+        }, { threshold: 0.3 });
+
+        events.forEach(event => observer.observe(event));
+      } else {
+        // Older browser: just show them
+        events.forEach(e => e.classList.add('show'));
+      }
+    });
   </script>
 </body>
 </html>
