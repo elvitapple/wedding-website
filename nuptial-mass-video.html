@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Nuptial Mass Video</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .page-header { margin-top: 10px;
+      text-align: center;
+    }
+
+    .page-header h1 {
+      font-family: "BrasiliaDelight";
+      font-size: 50px;
+      color: var(--maroon);
+      margin-bottom: 10px;
+      padding: 0 20px;
+            -webkit-text-stroke: 1px var(--maroon);
+}
+
+    .back-btn {
+      display: inline-block;
+      margin-top: 20px;
+      font-family: "ArtigoDisplay";
+      color: var(--primary);
+      text-decoration: none;
+      border-bottom: 1px dotted var(--primary);
+    }
+
+    .back-btn:hover {
+      color: var(--maroon);
+      border-bottom-color: var(--maroon);
+    }
+
+    .coming-soon {
+      text-align: center;
+      margin-top: 100px;
+      font-size: 24px;
+      color: var(--muted);
+    }
+
+    .video-container {
+      position: relative;
+      padding-bottom: 56.25%;
+      /* 16:9 */
+      height: 0;
+      overflow: hidden;
+      margin-top: 40px;
+      border-radius: 15px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    }
+
+    .video-container iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+  
+    .container {
+      margin-top: 10px !important;
+      padding: 10px !important;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="overlay">
+    <div class="container">
+      <header class="page-header">
+        <h1>Nuptial Mass&nbsp;Video</h1>
+        <a href="index.html#gallery" class="back-btn">← Back to Memories</a>
+      </header>
+      <div class="video-container">
+        <!-- REPLACE "YOUR_VIDEO_ID" BELOW WITH YOUR ACTUAL YOUTUBE VIDEO ID -->
+        <iframe src="https://www.youtube.com/embed/rzxfz04RY9s?si=Rb9Gj512tU46so7-" allowfullscreen
+          loading="lazy"></iframe>
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>
